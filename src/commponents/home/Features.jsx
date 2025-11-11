@@ -6,7 +6,6 @@ function Features() {
         const [isHover, setIsHover] = React.useState(false);
   return (
     <div id='features' className='flex flex-col items-center mb-19 scroll-mt-12'>
-        {/* Batch */}
         <div className="flex items-center gap-2 text-sm text-green-700 bg-green-400/10 rounded-full px-4 py-1">
             <Zap width={14} />
             <span>Simple Process</span>
