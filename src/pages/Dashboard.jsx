@@ -1,14 +1,42 @@
-import { FilePenLineIcon, PencilIcon, PlusIcon, TrashIcon, UploadCloud } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import {
+  FilePenLineIcon,
+  PencilIcon,
+  PlusIcon,
+  TrashIcon,
+  UploadCloud,
+  XIcon,
+} from "lucide-react";
+import React, { use, useEffect, useState } from "react";
 import { dummyResumeData } from "../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const colors = ["#34D399", "#8B5CF6", "#3B82F6", "#F59E0B", "#EF4444"];
   const [allResumes, setAllResumes] = useState([]);
+  const [showCreateResume, setShowCreateResume] = useState(false);
+  const [showUploadResume, setShowUploadResume] = useState(false);
+  const [title, setTitle] = useState('');
+  const [resume, setResume] = useState('');
+  const [editResumeId, setEditResumeId] = useState('');
+
+  const navigate = useNavigate();
 
   const loadAllResumes = async () => {
     setAllResumes(dummyResumeData);
   };
+
+  const createResume = async (e) => {
+    e.preventDefault();
+    setShowCreateResume(false);
+    navigate('/app/builder/res123');
+    // const newResume = {
+    //   id: Date.now().toString(),
+    //   title: title,
+    //   updatedAt: new Date().toISOString(),
+    // };
+    // setAllResumes([newResume, ...allResumes]);
+    // setTitle('');
+  }
 
   useEffect(() => {
     loadAllResumes();
@@ -22,7 +50,7 @@ const Dashboard = () => {
         </p>
 
         <div className="flex gap-4">
-          <button className="w-full bg-white sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 text-slate-600 border border-dashed border-slate-300 group hover:border-purple-500 hover:shadow-lg transition-all duration-300 cursor-pointer">
+          <button onClick={() => setShowCreateResume(true)} className="w-full bg-white sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 text-slate-600 border border-dashed border-slate-300 group hover:border-purple-500 hover:shadow-lg transition-all duration-300 cursor-pointer">
             <PlusIcon className="size-11 transition-all duration-300 p-2.5 bg-gradient-to-br from-green-300 to-indigo-500 text-white rounded-full" />
             <p className="text-sm group-hover:text-green-600 transition-all duration-300">
               Create Resume
@@ -74,6 +102,35 @@ const Dashboard = () => {
             );
           })}
         </div>
+        
+        {/* pop up */}
+        {showCreateResume && (
+          <form onSubmit={createResume} onClick={() => setShowCreateResume(false)} className="fixed inset-0 bg-black/70 backdrop-blur bg-opacity-50 z-10 flex items-center justify-center">
+            <div onClick={(e)=> e.stopPropagation()} className="relative bg-white p-6 rounded-lg shadow-lg w-80">
+              <h2 className="text-xl font-semibold mb-4">Create a Resume</h2>
+              <input
+                type="text"
+                placeholder="Enter resume title"
+                className="w-full px-4 py-2 mb-4 border rounded focus:border-green-600 ring-green-600"
+                required
+              />
+              <button
+                type="submit"
+                className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+              >
+                Create Resume
+              </button>
+              <XIcon
+                className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors"
+                onClick={() => {
+                  setShowCreateResume(false);
+                  setTitle('');
+                }}
+              />
+            </div>
+          </form>
+        )}
+
       </div>
     </div>
   );
