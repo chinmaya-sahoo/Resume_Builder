@@ -130,7 +130,16 @@ function ResumeBuilder() {
           </div>
 
           {/* Right Panel - Preview */}
-          <div></div>
+          <div className="lg:col-span-7 max-lg:mt-6">
+            {/* buttons */}
+            <div>
+                
+            </div>
+            {/* resume preview  */}
+            <div>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
