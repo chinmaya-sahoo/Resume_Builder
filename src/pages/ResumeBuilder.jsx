@@ -14,6 +14,7 @@ import {
   User,
 } from "lucide-react";
 import PersonalInfo from "../commponents/PersonalInfo";
+import ResumePreview from "../commponents/ResumePreview";
 
 function ResumeBuilder() {
   const { resumeId } = useParams();
@@ -136,9 +137,8 @@ function ResumeBuilder() {
                 
             </div>
             {/* resume preview  */}
-            <div>
-
-            </div>
+            <ResumePreview data={resumeData} template={resumeData.template} accentColor={resumeData.accent_color} />
+            
           </div>
         </div>
       </div>
