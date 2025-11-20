@@ -16,6 +16,7 @@ import {
 import PersonalInfo from "../commponents/PersonalInfo";
 import ResumePreview from "../commponents/ResumePreview";
 import TemplateSelector from "../commponents/TemplateSelector";
+import ColorPicker from "../commponents/ColorPicker";
 
 function ResumeBuilder() {
   const { resumeId } = useParams();
@@ -91,6 +92,7 @@ function ResumeBuilder() {
 
                 <div className="flex items-center gap-2 "  >
                   <TemplateSelector selectedTemplate={resumeData.template} onChange={(template)=>setResumeData((prev) => ({...prev,template}))} />
+                  <ColorPicker selectedColor={resumeData.accent_color} onChange={(color)=>setResumeData(prev=>({...prev , accent_color : color}))} />
                 </div>
 
                 <div className="flex items-center">
