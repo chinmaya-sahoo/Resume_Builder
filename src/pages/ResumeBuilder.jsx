@@ -89,10 +89,22 @@ function ResumeBuilder() {
 
               {/* Section Navigation */}
               <div className="flex justify-between items-center mb-6 border-b border-gray-300 py-1">
-
-                <div className="flex items-center gap-2 "  >
-                  <TemplateSelector selectedTemplate={resumeData.template} onChange={(template)=>setResumeData((prev) => ({...prev,template}))} />
-                  <ColorPicker selectedColor={resumeData.accent_color} onChange={(color)=>setResumeData(prev=>({...prev , accent_color : color}))} />
+                <div className="flex items-center gap-2 ">
+                  <TemplateSelector
+                    selectedTemplate={resumeData.template}
+                    onChange={(template) =>
+                      setResumeData((prev) => ({ ...prev, template }))
+                    }
+                  />
+                  <ColorPicker
+                    selectedColor={resumeData.accent_color}
+                    onChange={(color) =>
+                      setResumeData((prev) => ({
+                        ...prev,
+                        accent_color: color,
+                      }))
+                    }
+                  />
                 </div>
 
                 <div className="flex items-center">
@@ -123,29 +135,50 @@ function ResumeBuilder() {
                   >
                     Next <ChevronRight className="size-4" />
                   </button>
-
                 </div>
               </div>
 
               {/* form content  */}
               <div className="space-y-6">
                 {activeSection.id === "personal" && (
-                  <PersonalInfo data={resumeData.personal_info} onChange={(data)=>setResumeData(prev =>({...prev , personal_info:data}))}  removeBackground={removeBackground} setRemoveBackground={setRemoveBackground} />
+                  <PersonalInfo
+                    data={resumeData.personal_info}
+                    onChange={(data) =>
+                      setResumeData((prev) => ({
+                        ...prev,
+                        personal_info: data,
+                      }))
+                    }
+                    removeBackground={removeBackground}
+                    setRemoveBackground={setRemoveBackground}
+                  />
+                )}
+                {activeSection.id === "summary" && (
+                  <ProfessionalSummaryForm
+                    data={resumeData.professional_summary}
+                    onChange={(data) =>
+                      setResumeData((prev) => ({
+                        ...prev,
+                        professional_summary: data,
+                      }))
+                    }
+                    setResumeData={setResumeData}
+                  />
                 )}
               </div>
-
             </div>
           </div>
 
           {/* Right Panel - Preview */}
           <div className="lg:col-span-7 max-lg:mt-6">
             {/* buttons */}
-            <div>
-                
-            </div>
+            <div></div>
             {/* resume preview  */}
-            <ResumePreview data={resumeData} template={resumeData.template} accentColor={resumeData.accent_color} />
-            
+            <ResumePreview
+              data={resumeData}
+              template={resumeData.template}
+              accentColor={resumeData.accent_color}
+            />
           </div>
         </div>
       </div>
