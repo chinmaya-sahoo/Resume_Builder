@@ -163,7 +163,7 @@ function ResumeBuilder() {
                         professional_summary: data,
                       }))
                     }
-                    setResumeData={setResumeData} //remember if not used in future remove it
+                    setResumeData={setResumeData} //remember if not used in future remove this line
                   />
                 )}
               </div>
