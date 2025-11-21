@@ -17,6 +17,7 @@ import PersonalInfo from "../commponents/PersonalInfo";
 import ResumePreview from "../commponents/ResumePreview";
 import TemplateSelector from "../commponents/TemplateSelector";
 import ColorPicker from "../commponents/ColorPicker";
+import ProfessionalSummeryForm from "../commponents/ProfessionalSummeryForm";
 
 function ResumeBuilder() {
   const { resumeId } = useParams();
@@ -154,7 +155,7 @@ function ResumeBuilder() {
                   />
                 )}
                 {activeSection.id === "summary" && (
-                  <ProfessionalSummaryForm
+                  <ProfessionalSummeryForm
                     data={resumeData.professional_summary}
                     onChange={(data) =>
                       setResumeData((prev) => ({
@@ -162,7 +163,7 @@ function ResumeBuilder() {
                         professional_summary: data,
                       }))
                     }
-                    setResumeData={setResumeData}
+                    setResumeData={setResumeData} //remember if not used in future remove it
                   />
                 )}
               </div>
