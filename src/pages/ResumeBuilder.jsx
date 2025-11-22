@@ -178,6 +178,17 @@ function ResumeBuilder() {
                     }
                   />
                 )}
+                {activeSection.id === "education" && (
+                  <ExperienceForm
+                    data={resumeData.education}
+                    onChange={(data) =>
+                      setResumeData((prev) => ({
+                        ...prev,
+                        education: data,
+                      }))
+                    }
+                  />
+                )}
               </div>
             </div>
           </div>

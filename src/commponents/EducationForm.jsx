@@ -99,45 +99,14 @@ const EducationForm = ({ data, onChange }) => {
                   type="month"
                   className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 />
-              </div>
-              <label className="flex items-center gap-2">
                 <input
-                  type="checkbox"
-                  checked={Education.is_current || false}
-                  onChange={(e) => {
-                    updateEducation(
-                      index,
-                      "is_current",
-                      e.target.checked ? true : false
-                    );
-                  }}
-                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                />
-                <span className="text-sm text-gray-700">
-                  Currently working here
-                </span>
-              </label>
-
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium text-gray-700">
-                    Job Description
-                  </label>
-
-                  <button className="flex items-center gap-1 px-2 py-1 text-xs bg-purple-100 text-purple-700 rounded hover:bg-purple-200 transition-colors disabled:opacity-50">
-                    <Sparkles className="w-3 h-3" />
-                    Enhance with AI
-                  </button>
-                </div>
-
-                <textarea
-                  value={Education.description || ""}
+                  value={education.gpa || ""}
                   onChange={(e) =>
-                    updateEducation(index, "description", e.target.value)
+                    updateEducation(index, "gpa", e.target.value)
                   }
-                  rows={4}
-                  className="w-full text-sm px-3 py-2 rounded-lg resize-none border border-gray-300 focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-                  placeholder="Describe your key responsibilities and achievements..."
+                  type="text"
+                  placeholder="GPA (e.g., 8.8/10)"
+                  className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 />
               </div>
             </div>
