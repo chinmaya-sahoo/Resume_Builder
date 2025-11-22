@@ -1,4 +1,4 @@
-import { Plus, Sparkles, Trash2 } from "lucide-react";
+import { GraduationCap, Plus, Sparkles, Trash2 } from "lucide-react";
 import React from "react";
 
 const EducationForm = ({ data, onChange }) => {
@@ -28,9 +28,9 @@ const EducationForm = ({ data, onChange }) => {
       <div className="flex items-center justify-between">
         <div>
           <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
-            Professional Education
+            Education
           </h3>
-          <p className="text-sm text-gray-500">Add your job expperience here</p>
+          <p className="text-sm text-gray-500">Add your education details here</p>
         </div>
         <button
           onClick={addEducation}
@@ -43,13 +43,13 @@ const EducationForm = ({ data, onChange }) => {
 
       {data.length === 0 ? (
         <div className="text-center py-8 text-gray-500">
-          <Briefcase className="w-12 h-12 mx-auto mb-3 text-gray-300" />
+          <GraduationCap className="w-12 h-12 mx-auto mb-3 text-gray-300" />
           <p>No Education added yet.</p>
           <p className="text-sm">Click "Add Education" to get started.</p>
         </div>
       ) : (
         <div className="space-y-4">
-          {data.map((Education, index) => (
+          {data.map((education, index) => (
             <div
               key={index}
               className="p-4 border border-gray-200 rounded-lg space-y-3"
@@ -65,39 +65,39 @@ const EducationForm = ({ data, onChange }) => {
               </div>
               <div className="grid md:grid-cols-2 gap-3">
                 <input
-                  value={Education.company || ""}
+                  value={education.institution || ""}
                   onChange={(e) =>
-                    updateEducation(index, "company", e.target.value)
+                    updateEducation(index, "institution", e.target.value)
                   }
                   type="text"
-                  placeholder="Company Name"
+                  placeholder="Institute Name"
                   className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 />
                 <input
-                  value={Education.position || ""}
+                  value={education.degree || ""}
                   onChange={(e) =>
-                    updateEducation(index, "position", e.target.value)
+                    updateEducation(index, "degree", e.target.value)
                   }
                   type="text"
-                  placeholder="Job Title"
+                  placeholder="Degree (eg. Bachelor's , Master's)"
                   className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 />
                 <input
-                  value={Education.start_date || ""}
+                  value={education.field || ""}
                   onChange={(e) =>
-                    updateEducation(index, "start_date", e.target.value)
+                    updateEducation(index, "field", e.target.value)
+                  }
+                  type="text"
+                  placeholder="Field of Study"
+                  className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                />
+                <input
+                  value={education.graduation_date || ""}
+                  onChange={(e) =>
+                    updateEducation(index, "graduation_date", e.target.value)
                   }
                   type="month"
                   className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-                />
-                <input
-                  value={Education.end_date || ""}
-                  onChange={(e) =>
-                    updateEducation(index, "end_date", e.target.value)
-                  }
-                  type="month"
-                  disabled={Education.is_current}
-                  className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors disabled:bg-gray-100"
                 />
               </div>
               <label className="flex items-center gap-2">
