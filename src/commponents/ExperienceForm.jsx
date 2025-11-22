@@ -35,7 +35,7 @@ const ExperienceForm = ({ data, onChange }) => {
         </div>
         <button
           onClick={addExperience}
-          className="flex items-center gap-2 px-3 py-2 text-sm bg-purple-50 text-purple-600 hover:bg-purple-200 rounded  transition-colors "
+          className="flex items-center gap-2 px-3 py-2 text-sm bg-green-50 text-green-600 hover:bg-green-200 rounded-lg  transition-colors "
         >
           <Plus className="size-4" />
           Add Experience
