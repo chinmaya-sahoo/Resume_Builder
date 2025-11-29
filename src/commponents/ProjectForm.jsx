@@ -1,3 +1,4 @@
+import { Plus, Trash2 } from 'lucide-react';
 import React from 'react'
 
 const ProjectForm = ({data , onChange}) => {
@@ -21,11 +22,11 @@ const ProjectForm = ({data , onChange}) => {
     onChange(updated);
   };
   return (
-   <div className="space-y-6">
+   <div>
       <div className="flex items-center justify-between">
         <div>
           <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
-            Project
+            Projects
           </h3>
           <p className="text-sm text-gray-500">Add your Project details here</p>
         </div>
@@ -38,15 +39,8 @@ const ProjectForm = ({data , onChange}) => {
         </button>
       </div>
 
-      {data.length === 0 ? (
-        <div className="text-center py-8 text-gray-500">
-          <GraduationCap className="w-12 h-12 mx-auto mb-3 text-gray-300" />
-          <p>No Project added yet.</p>
-          <p className="text-sm">Click "Add Project" to get started.</p>
-        </div>
-      ) : (
-        <div className="space-y-4">
-          {data.map((Project, index) => (
+        <div className="space-y-4 mt-6">
+          {data.map((project, index) => (
             <div
               key={index}
               className="p-4 border border-gray-200 rounded-lg space-y-3"
@@ -62,54 +56,38 @@ const ProjectForm = ({data , onChange}) => {
               </div>
               <div className="grid md:grid-cols-2 gap-3">
                 <input
-                  value={Project.institution || ""}
+                  value={project.name || ""}
                   onChange={(e) =>
-                    updateProject(index, "institution", e.target.value)
+                    updateProject(index, "name", e.target.value)
                   }
                   type="text"
-                  placeholder="Institute Name"
+                  placeholder="Project Name"
                   className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 />
                 <input
-                  value={Project.degree || ""}
+                  value={project.type || ""}
                   onChange={(e) =>
-                    updateProject(index, "degree", e.target.value)
+                    updateProject(index, "type", e.target.value)
                   }
                   type="text"
-                  placeholder="Degree (eg. Bachelor's , Master's)"
+                  placeholder="Project Type"
                   className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 />
-                <input
-                  value={Project.field || ""}
+                <textarea
+                rows={4}
+                  value={project.description || ""}
                   onChange={(e) =>
-                    updateProject(index, "field", e.target.value)
+                    updateProject(index, "description", e.target.value)
                   }
-                  type="text"
-                  placeholder="Field of Study"
+                  placeholder="Provide Project Description..."
                   className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
                 />
-                <input
-                  value={Project.graduation_date || ""}
-                  onChange={(e) =>
-                    updateProject(index, "graduation_date", e.target.value)
-                  }
-                  type="month"
-                  className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-                />
-                <input
-                  value={Project.gpa || ""}
-                  onChange={(e) =>
-                    updateProject(index, "gpa", e.target.value)
-                  }
-                  type="text"
-                  placeholder="GPA (e.g., 8.8/10)"
-                  className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
-                />
+                
               </div>
             </div>
           ))}
         </div>
-      )}
+
     </div>
   )
 }
