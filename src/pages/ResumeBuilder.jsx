@@ -55,7 +55,7 @@ function ResumeBuilder() {
     { id: "summary", name: "Summary", icon: FileText },
     { id: "experience", name: "Experience", icon: Briefcase },
     { id: "education", name: "Education", icon: GraduationCap },
-    { id: "projects", name: "Projects", icon: FolderIcon },
+    { id: "project", name: "Project", icon: FolderIcon },
     { id: "skills", name: "Skills", icon: Sparkles },
   ];
 
